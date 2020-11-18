@@ -1,3 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jekyll-quadra
+  labels:
+    app: quadra1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quadra1
+  template:
+    metadata:
+      labels:
+        app: quadra1
+    spec:
+      containers:
+      - name: my-jekyll
+        image: nginx
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: data-volume
         ports:
         - containerPort: 80
       volumes:
