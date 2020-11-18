@@ -1,0 +1,22 @@
+        ports:
+        - containerPort: 80
+      volumes:
+      - name: data-volume
+        hostPath:
+      # directory location on host
+          path: /home/anju/data/QuadraLogics.github.io/_site
+      # this field is optional
+          type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quadra-service
+spec:
+  type: NodePort
+  selector:
+    app: quadra1
+  ports:
+  - port: 80
+
+                           
