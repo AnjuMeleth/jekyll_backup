@@ -1,0 +1,8 @@
+#!/bin/bash
+now=$(date +"%m_%d_%Y_%T")
+echo "${now}" >> /home/anju/data/buildtime.txt
+cd /home/anju/data/certify-me.github.io
+git pull
+bundle install
+bundle exec jekyll build
+echo "over" >> /home/anju/data/buildtime.txt
